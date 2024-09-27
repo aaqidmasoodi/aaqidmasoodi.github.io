@@ -1,25 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    background-color: black;
+}
 
 nav {
     display: flex;
-    /* background-color: red; */
+    background-color: rgba(255,255,255, 0.95);
+    /* -webkit-filter: blur(8px); */
     justify-content: space-around;
     align-items: center;
     padding: 1.25rem;
+    position: fixed;
+    width: 100%;
 }
 
 .nav__logo {list-style: none;}
+.nav__logo h1 {color: black;}
+.nav__logo p {
+    color: black;
+    font-size: 0.75rem;
+}
 .nav__links {
-    min-width: 50%;
-    /* background-color: blue; */
     display: flex;
-    justify-content: space-between;
     list-style: none;
+}
+.nav__links a {
+    text-decoration: none;
+    background-color: #efefef;
+    padding: 0.75rem;
+    margin: 0.5rem;
+    text-wrap: wrap;
+    border-radius: 0.5rem;
+}
+.nav__links a:hover {
+    background-color: #dfdfdf;
 }
 
 a:link {
@@ -32,4 +55,20 @@ a:visited {
 
 a:hover {
     color: hotpink;
+}
+
+
+.banner {
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: fill;
+    background-attachment: fixed;
+}
+
+#b1 {
+    background-image: url('https://picsum.photos/1920/1080?random=1');
+}
+
+#b2 {
+    background-image: url('https://picsum.photos/1920/1080?random=2');
 }
