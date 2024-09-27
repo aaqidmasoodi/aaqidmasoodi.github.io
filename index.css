@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav {
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.nav__logo {list-style: none;}
+.nav__links {
+    min-width: 50%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: hotpink;
+}
