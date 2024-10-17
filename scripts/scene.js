@@ -4,23 +4,33 @@ function createScene() {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    scene.background = new THREE.Color(0x1a1a1a);
+    scene.background = new THREE.Color(0x111111);
 
-    // Create particles
+    // Create a galaxy effect
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 500;
+    const particlesCount = 10000;
     const positions = new Float32Array(particlesCount * 3);
+    const colors = new Float32Array(particlesCount * 3);
+    
     for (let i = 0; i < particlesCount * 3; i++) {
-        positions[i] = (Math.random() - 0.5) * 10;
+        positions[i] = (Math.random() - 0.5) * 100;
+        colors[i] = Math.random();
     }
+    
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.5,
+        vertexColors: true,
+        blending: THREE.AdditiveBlending,
+        transparent: true
+    });
+    
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particles);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-    camera.position.z = 5;
+    camera.position.z = 50;
 
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -34,7 +44,10 @@ function createScene() {
 function animateScene({ scene, camera, renderer, particles }) {
     function animate() {
         requestAnimationFrame(animate);
+
+        // Rotate the galaxy for a dynamic effect
         particles.rotation.y += 0.001;
+        
         renderer.render(scene, camera);
     }
     animate();

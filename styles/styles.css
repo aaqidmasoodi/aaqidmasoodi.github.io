@@ -2,49 +2,61 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    background-color: #111; /* Dark background */
 }
 
 #canvas-container {
-    position: fixed;
+    position: fixed; /* Keep the canvas fixed */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -1; /* Ensure it stays behind other content */
 }
 
 .overlay {
-    position: absolute;
-    width: 100%;
-    color: #fff;
-    z-index: 1;
+    position: relative;
+    z-index: 1; /* Bring overlay in front */
+    color: #fff; /* White text for contrast */
 }
 
 section {
-    min-height: 100vh; /* Make each section fill the screen */
+    min-height: 100vh; /* Ensure each section is full height */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for readability */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
     margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
-h1, h2 {
-    margin: 0;
+section h2 {
     font-size: 2.5em;
     color: #00ff00;
+    margin-bottom: 20px;
 }
 
-p, ul {
-    font-size: 1.2em;
-    color: #fff;
+.content-block {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent for visibility */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
     max-width: 800px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.content-block p, .content-block li {
+    color: #fff;
+    font-size: 1.1em;
+    text-align: left;
 }
 
 nav {
@@ -54,7 +66,7 @@ nav {
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
     text-align: center;
-    z-index: 2;
+    z-index: 2; /* Ensure nav is above everything */
 }
 
 nav a {
@@ -66,4 +78,8 @@ nav a {
 
 nav a:hover {
     color: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
 }
